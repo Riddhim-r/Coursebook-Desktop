@@ -8,6 +8,7 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const [role, setRole] = useState<Role>('admin')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [showLogin, setShowLogin] = useState(false)
 
@@ -52,6 +53,7 @@ const LoginPage = () => {
                 onClick={() => {
                   setRole('admin')
                   setPassword('')
+                  setShowPassword(false)
                   setError('')
                 }}
               >
@@ -63,6 +65,7 @@ const LoginPage = () => {
                 onClick={() => {
                   setRole('user')
                   setPassword('')
+                  setShowPassword(false)
                   setError('')
                 }}
               >
@@ -72,13 +75,23 @@ const LoginPage = () => {
 
             <label className="field">
               <span>Input your not-so-secret code here:</span>
-              <input
-                type="password"
-                placeholder={role === 'admin' ? 'admin123' : 'user123'}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
+              <div className="password-row">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder={role === 'admin' ? 'admin123' : 'user123'}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword((current) => !current)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? 'Hide' : 'Show'}
+                </button>
+              </div>
             </label>
 
             {error ? <p className="error">{error}</p> : null}

@@ -12,6 +12,7 @@ const createWindow = async () => {
     minWidth: 1100,
     minHeight: 760,
     backgroundColor: '#efc8d5',
+    icon: path.join(__dirname, '..', 'build', 'icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,

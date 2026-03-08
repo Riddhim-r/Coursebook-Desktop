@@ -129,11 +129,13 @@ File: `src/pages/CreateCourse.tsx`
 Two-step creation:
 
 1. Course setup
+
 - Title, description, start date, number of days.
 - Build content library using URLs.
 - Detect playlist URLs and collect total video count.
 
 2. Daily goals assignment
+
 - Drag content into each day.
 - Max 2 URLs per day.
 - Playlist allocations are tracked and must be fully distributed.
@@ -201,6 +203,7 @@ File: `src/pages/Stats.tsx`
 The app interacts with three tables.
 
 1. `courses`
+
 - `id` (uuid / primary key)
 - `title` (text)
 - `description` (text, nullable)
@@ -213,12 +216,14 @@ The app interacts with three tables.
 - `created_at` (timestamp)
 
 2. `course_day_checks`
+
 - `id` (uuid / primary key)
 - `course_id` (foreign key -> courses.id)
 - `day_index` (int)
 - `created_at` (timestamp)
 
 3. `helpbook_entries`
+
 - `id` (uuid / primary key)
 - `title` (text)
 - `tags` (text[])
@@ -366,6 +371,39 @@ npm run build
 npm run preview
 ```
 
+### Step 8: Change the Windows App Icon
+
+If you want to change the packaged Electron app icon on Windows:
+
+1. Create a large square PNG source image, preferably `512x512` or `1024x1024`. use the site [iconConverter](https://www.icoconverter.com/)
+2. Convert that PNG to .ico and add it to `build/icon.ico`.
+3. While creating the `.ico`, ensure it includes these sizes:
+   - `16x16`
+   - `32x32`
+   - `48x48`
+   - `64x64`
+   - `128x128`
+   - `256x256`
+4. Make sure `256x256` is included. Electron Builder will reject the icon if that size is missing.
+5. Close all running `Coursebook.exe` windows before rebuilding.
+6. Delete the old unpacked desktop build output:
+
+```bash
+Remove-Item -Recurse -Force .\dist\win-unpacked
+```
+
+7. Rebuild the desktop app:
+
+```bash
+npm run build:desktop
+```
+
+Notes:
+
+- Use `.ico` for the Windows desktop app icon, not `.jpg`.
+- If rebuild fails with `EBUSY` for `dist\win-unpacked`, the old app or that folder is still open somewhere.
+- The browser tab icon is separate from the desktop app icon.
+
 ### Default Local Login Credentials
 
 - Admin: role `admin`, password `admin123`
@@ -383,19 +421,23 @@ npm run preview
 ### Near-Term (High Impact)
 
 1. Real authentication and authorization
+
 - Replace local storage fake auth with Supabase Auth.
 - Enforce role checks server-side.
 
 2. Complete the Stats module
+
 - Per-course completion %
 - On-time vs late completion metrics
 - Weekly streak visibility
 
 3. Strengthen workflow consistency
+
 - Align rules text and implementation around check-off reversibility.
 - Add server-side validation for assignment constraints.
 
 4. Improve developer operations
+
 - Add `.env.example`
 - Add migration scripts for schema and policies
 - Add seed data script for demo mode
@@ -403,16 +445,19 @@ npm run preview
 ### Mid-Term
 
 1. Better learning analytics
+
 - Daily velocity
 - Playlist completion burn-down
 - Course-level risk signals (missed deadlines, unassigned days)
 
 2. Better Helpbook ergonomics
+
 - Multi-tag per entry
 - Rich text or markdown steps
 - Duplicate detection for repeated solutions
 
 3. Better course management
+
 - Course templates
 - Draft mode before final lock
 - Cloning archived courses as new plans
@@ -420,14 +465,17 @@ npm run preview
 ### Long-Term
 
 1. Multi-user expansion
+
 - More than one user per admin
 - Team views and permissions
 
 2. External integrations
+
 - GitHub API validation for final project URL
 - Calendar reminders for deadlines
 
 3. Quality and reliability
+
 - Unit + integration + E2E tests
 - Error boundaries and telemetry
 - Performance budget and bundle monitoring
@@ -476,4 +524,3 @@ src/
 ## License
 
 No license file is currently included in this repository. Add one if you plan to distribute or open-source this project.
-
