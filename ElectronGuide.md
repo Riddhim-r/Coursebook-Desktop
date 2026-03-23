@@ -853,7 +853,7 @@ Use this for normal installation.
 
 Yes.
 
-The desktop app icon can be changed later by adding an `.ico` file and rebuilding the app.
+The desktop app icon can be changed later by adding a folder `build` in the root folder of the app and then adding an `.ico` file and rebuilding the app.
 
 ### 12.8 Can the code be changed after the app has become a desktop app?
 
