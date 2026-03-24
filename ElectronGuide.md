@@ -40,17 +40,17 @@ The desktop version of Coursebook now has three layers:
 2. Main process
 - This is Electron's backend/runtime process
 - It creates the app window and handles OS-level work
-- File: [electron/main.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\main.cjs)
+- File: [electron/main.cjs](C:\Users\USERNAME\Desktop\coursebook\electron\main.cjs)
 
 3. Preload bridge
 - This safely exposes selected desktop functions from Electron to the React app
-- File: [electron/preload.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\preload.cjs)
+- File: [electron/preload.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\preload.cjs)
 
 The app also has:
 
-- Database setup: [electron/db.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\db.cjs)
-- Desktop IPC handlers: [electron/ipc.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\ipc.cjs)
-- Frontend wrapper around Electron APIs: [src/lib/desktopApi.ts](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\lib\desktopApi.ts)
+- Database setup: [electron/db.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\db.cjs)
+- Desktop IPC handlers: [electron/ipc.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\ipc.cjs)
+- Frontend wrapper around Electron APIs: [src/lib/desktopApi.ts](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\lib\desktopApi.ts)
 
 ### 1.3 How requests flow now
 
@@ -107,7 +107,7 @@ SQLite was chosen because:
 
 ### 3.1 New Electron entry point
 
-File: [electron/main.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\main.cjs)
+File: [electron/main.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\main.cjs)
 
 This file:
 
@@ -120,7 +120,7 @@ This file:
 
 ### 3.2 New preload bridge
 
-File: [electron/preload.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\preload.cjs)
+File: [electron/preload.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\preload.cjs)
 
 This exposes `window.coursebook` to the frontend with methods like:
 
@@ -141,7 +141,7 @@ This exposes `window.coursebook` to the frontend with methods like:
 
 ### 3.3 New SQLite setup
 
-File: [electron/db.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\db.cjs)
+File: [electron/db.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\db.cjs)
 
 This file:
 
@@ -158,7 +158,7 @@ Tables created:
 
 ### 3.4 New IPC handlers
 
-File: [electron/ipc.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\electron\ipc.cjs)
+File: [electron/ipc.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\electron\ipc.cjs)
 
 This file is the database backend for the desktop app.
 
@@ -173,7 +173,7 @@ It contains:
 
 ### 3.5 Frontend desktop API wrapper
 
-File: [src/lib/desktopApi.ts](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\lib\desktopApi.ts)
+File: [src/lib/desktopApi.ts](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\lib\desktopApi.ts)
 
 This gives the React app a single way to talk to Electron.
 
@@ -186,7 +186,7 @@ Instead of calling Supabase, pages now call:
 
 ### 3.6 Type declarations for the bridge
 
-File: [src/types/electron.d.ts](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\types\electron.d.ts)
+File: [src/types/electron.d.ts](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\types\electron.d.ts)
 
 This tells TypeScript that `window.coursebook` exists in the Electron app.
 
@@ -194,18 +194,18 @@ This tells TypeScript that `window.coursebook` exists in the Electron app.
 
 These pages were changed to use local Electron APIs instead of Supabase:
 
-- [src/pages/CoursesList.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\pages\CoursesList.tsx)
-- [src/pages/CreateCourse.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\pages\CreateCourse.tsx)
-- [src/pages/CourseDetail.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\pages\CourseDetail.tsx)
-- [src/pages/UserCourseLibrary.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\pages\UserCourseLibrary.tsx)
-- [src/pages/Helpbook.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\pages\Helpbook.tsx)
-- [src/pages/AiPrompts.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\pages\AiPrompts.tsx)
+- [src/pages/CoursesList.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\pages\CoursesList.tsx)
+- [src/pages/CreateCourse.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\pages\CreateCourse.tsx)
+- [src/pages/CourseDetail.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\pages\CourseDetail.tsx)
+- [src/pages/UserCourseLibrary.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\pages\UserCourseLibrary.tsx)
+- [src/pages/Helpbook.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\pages\Helpbook.tsx)
+- [src/pages/AiPrompts.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\pages\AiPrompts.tsx)
 
 ### 3.8 Supabase runtime removed
 
 The runtime Supabase client file was removed:
 
-- [src/lib/supabase.ts](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\lib\supabase.ts)
+- [src/lib/supabase.ts](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\lib\supabase.ts)
 
 The Supabase JS dependency was also removed from the app runtime path.
 
@@ -223,7 +223,7 @@ Important: this removed runtime dependency, not historical data. Existing data r
 - `concurrently`
 - `wait-on`
 
-File: [package.json](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\package.json)
+File: [package.json](C:\Users\USERNAME\Desktop\coursebook\coursebook\package.json)
 
 ### 4.2 Scripts added
 
@@ -278,11 +278,11 @@ That caused two production problems that had to be fixed:
 
 ### 5.1 Fixes applied
 
-File: [vite.config.ts](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\vite.config.ts)
+File: [vite.config.ts](C:\Users\USERNAME\Desktop\coursebook\coursebook\vite.config.ts)
 
 - `base: './'` was added so built assets become relative
 
-File: [src/main.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\main.tsx)
+File: [src/main.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\main.tsx)
 
 - the app now uses:
   - `HashRouter` in Electron
@@ -313,7 +313,7 @@ Both were done, but in two different phases.
 
 A one-time migration script was added:
 
-- [scripts/migrate-supabase-to-sqlite.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\scripts\migrate-supabase-to-sqlite.cjs)
+- [scripts/migrate-supabase-to-sqlite.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\scripts\migrate-supabase-to-sqlite.cjs)
 
 This script:
 
@@ -369,7 +369,7 @@ Verified sample course:
 
 A separate verification script was added:
 
-- [scripts/verify-local-db.cjs](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\scripts\verify-local-db.cjs)
+- [scripts/verify-local-db.cjs](C:\Users\USERNAME\Desktop\coursebook\coursebook\scripts\verify-local-db.cjs)
 
 It confirms:
 
@@ -563,7 +563,7 @@ That is better than storing the DB next to the `.exe` because:
 
 After a successful desktop build, app files are generated under:
 
-`C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\dist`
+`C:\Users\USERNAME\Desktop\coursebook\coursebook\dist`
 
 Important outputs:
 
@@ -754,8 +754,8 @@ Cause:
 
 Resolution:
 
-- set `base: './'` in [vite.config.ts](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\vite.config.ts)
-- switch to `HashRouter` in Electron via [src/main.tsx](C:\Users\riddh\Desktop\Apps\Coursebook\coursebook\src\main.tsx)
+- set `base: './'` in [vite.config.ts](C:\Users\USERNAME\Desktop\coursebook\coursebook\vite.config.ts)
+- switch to `HashRouter` in Electron via [src/main.tsx](C:\Users\USERNAME\Desktop\coursebook\coursebook\src\main.tsx)
 
 ### 11.5 `dist` contents were confusing
 
